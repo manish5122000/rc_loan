@@ -1,0 +1,49 @@
+{% extends 'adminss/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}Personal Information{% endblock title %}
+{% block content %}
+
+<div class="container">
+    
+
+<div class="row">
+        <div><h3>Welcome {{request.user}}</h3>
+            <h4>Roll - {{request.user.Roles.category}}</h4></div><br>
+        {{ request.user.code }}
+            <div class="col-sm-2 border-end">
+                <ul class="list-unstyled">
+                    <li class="d-grid"><a href="{% url 'dashboard' %}" class="btn {{ active }} ">Dashboard</a></li>
+                    <li class="d-grid"><a href="{% url 'personalinformation' %}" class="btn">Personal Information</a></li>
+                    <li class="d-grid"><a href="{% url 'docs' %}" class="btn">Document</a></li>
+                    <li class="d-grid"><a href="{% url 'loan' %}" class="btn  ">Apply For Loan</a></li>
+
+                </ul>
+            </div>
+        <div class="col-sm-9 offset-sm-1">
+        <div class="row">
+            {% for db in dash %}
+            <div class="col-sm-4 my-1">
+             <div class="card" >
+              <div class="card-body">
+               <h3>Address {{forloop.counter}}</h3>
+               <p>Name: {{db.Full_Name}}</p>
+               <p>Pincode: {{db.Pin_code}}</p>
+               <p>Profile: {{db.Work_Type}}</p>
+               <p>Address: {{db.Address_Type}}</p>
+               <p>Aadhar Card: {{db.Aadhar_Card_Number}}</p>
+               <p>PanCard: {{db.Pan_Card_Number}}</p>
+                <br>
+        
+              </div>
+             </div>
+            </div>
+        {% endfor %}
+</div>
+</div>
+</div>
+</div>
+
+
+
+{% endblock content %}

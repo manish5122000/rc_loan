@@ -1,0 +1,44 @@
+{% extends 'adminss/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}Personal Information{% endblock title %}
+{% block content %}
+
+<div class="container">
+    
+
+<div class="row">
+        <div><h3>Welcome {{request.user}}</h3>
+            <h4>Roll - {{request.user.Roles.category}}</h4></div><br>
+        {{ request.user.code }}
+            <div class="col-sm-2 border-end">
+                <ul class="list-unstyled">
+                    <li class="d-grid"><a href="{% url 'dashboard' %}" class="btn">Dashboard</a></li>
+
+                    <li class="d-grid"><a href="{% url 'personalinformation' %}" class="btn {{active}}">Personal Information</a></li>
+                    <li class="d-grid"><a href="{% url 'docs' %}" class="btn">Document</a></li>
+                    <li class="d-grid"><a href="{% url 'loan' %}" class="btn  ">Apply For Loan</a></li>
+
+                </ul>
+            </div>
+        <div class="col-sm-9 offset-sm-1">
+        <div class="row">
+
+    <form action="" method="post" novalidate class="shadow p-5">
+    {% csrf_token %}
+    <center><h2>Admin Page</h2></center><br>
+        {{ ad_form }}
+        
+    
+    <input type="submit" value="Submit" class="btn btn-primary my-2">
+    <br>
+    </form>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+{% endblock content %}

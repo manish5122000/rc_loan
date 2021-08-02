@@ -1,0 +1,181 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!--Owl Carousel CSS-->
+    <link rel="stylesheet" href="{% static 'adminss/css/owl.carousel.min.css' %}">
+
+    <!--FontAwesome CSS-->
+    <link rel="stylesheet" href="{% static 'adminss/css/all.min.css' %}">
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="{% static 'adminss/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'adminss/css/custom.css' %}">
+
+    <title>Loan Management System| {% block title %} {% endblock title %} </title>
+  </head>
+  <body>
+    <nav class="navbar fixed-top navbar-expand-lg bg-dark scrolling-navbar" >
+        <div class="container">
+         <!-- <a class="navbar-brand" href="/"><img src="" height="45px" width="50px" alt="error"></a> -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+               <a class="nav-link text-white" href="#" id="electronicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 Courses
+               </a>
+               <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
+                 <li><a class="dropdown-item" href="">Courses</a></li>
+                 <li><a class="dropdown-item" href="#">Materials</a></li>
+               </ul>
+             </li>
+
+             <li class="nav-item ">
+              <a class="nav-link active text-white" aria-current="page" href="{% url 'loan' %}">Apply for card</a>
+            </li>
+   
+             <li class="nav-item">
+               <a class="nav-link active" aria-current="page" href="/">Photos</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link active" aria-current="page" href="/">Blogs</a>
+             </li>
+             <!-- <li class="nav-item">
+               <a class="nav-link active" aria-current="page" href="">About-Us</a>
+               <a href=""><p class="text-decoration-none av-link active" aria-current="page">About-Us</p></a>
+             </li> -->
+              
+         
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-warning" type="submit">S</button>
+            </form>
+            <div>
+             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              {% if request.user.is_authenticated %}
+              <li class="nav-item dropdown mx-2">
+                 <a class="nav-link text-white" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{request.user.username}}
+                 </a>
+                 <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                   <li><a class="dropdown-item" href="{% url 'personalinformation' %}">My Account</a></li>
+                   <li><a class="dropdown-item" href="">Orders</a></li>
+                   <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change Password</a></li>
+                   <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                 </ul>
+               </li>
+          
+               
+           {% else %}
+           <li>
+             <a class="nav-link dropdown-toggle text-white" href="{% url 'login' %}" id="electronicsDropdown" role="button"   aria-expanded="false">
+               Login
+             </a>
+   
+           </li>
+   
+           <li >
+             <a class="nav-link dropdown-toggle text-white" href="{% url 'rpage' %}" id="electronicsDropdown" role="button"  aria-expanded="false">
+               Registration
+             </a>
+   
+           </li>
+              {% endif %}
+         
+             </ul>
+            </div>
+          </div>
+        </div>
+       </nav>
+{% block content %}  {% endblock content %}
+
+<!-- footer start -->
+
+<div class="jumbotron" style="background-color: rgb(226, 60, 87);">
+  <div class="container mt-5">
+    <div class="row">
+
+      <div class="col-lg-3 pt-5" style="padding-top: 30x;">
+        <h2>redcarpet</h2>
+        <p>Track your transactions, pay your bills and EMIs, all from the mobile app.</p>
+
+      </div>
+
+      
+      <div class="col-lg-3 pt-5">
+        <h2>Company</h2>
+        <p>About</p>
+        <p>Careers</p>
+        <p>Blog</p>
+      </div>
+      
+      <div class="col-lg-3 pt-5">
+        <h2>Services</h2>
+        <p>Redcarpet Card</p>
+        <p>Rebel Card</p>
+        <p>Reset Card</p>
+        <p>Personal Loan</p>
+        <p>Ecommerce Loan</p>
+        <p>RedCarpet Card Sdk</p>
+
+      </div>
+      
+      <div class="col-lg-3 pt-5">
+        <h2>Legal</h2>
+        <p>Legal</p>
+        <p>Terms & Conditions</p>
+        <p>Schedule Of Charges</p>
+        <p>Privacy Policy/p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid bg-dark text-center mt-1">
+  <small class="text-white">Copyright &copy; 2021  </small>
+</footer>
+
+
+<!-- footer end -->
+
+
+  <script>
+    $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+  </script>
+
+  
+
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static 'adminss/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'adminss/js/all.min.js' %}"></script>
+    <script src="{% static 'adminss/js/myscript.js' %}"></script>
+    <script src="{% static 'adminss/js/custom.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
